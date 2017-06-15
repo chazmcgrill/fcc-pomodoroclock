@@ -1,19 +1,17 @@
-
 // User Story: I can start a 25 minute pomodoro, and the timer will go off once 25 minutes has elapsed.
-// User Story: I can reset the clock for my next pomodoro.
-// 1 second digit needs a zero in front
 
 var seconds = 60,
     count = 0,
     minBreak = 2,
     minSesh = 2,
     status = 'break',
-    pauseFlag = false;
+    pauseFlag = false,
+    interval;
 
 // timer function
 function timer(min, sec, counter) {
 
-  var interval = setInterval(function(){
+  interval = setInterval(function() {
 
     if (counter % 60 === 0) {
       console.log('minute');
@@ -29,7 +27,8 @@ function timer(min, sec, counter) {
     if (!pauseFlag) {
       console.log(counter + ' second');
       sec--;
-      $('.seconds').text(sec);
+      value = display(sec);
+      $('.seconds').text(value);
       counter--;
     }
 
@@ -39,7 +38,7 @@ function timer(min, sec, counter) {
 
 // function that switches between break and session
 function chooser() {
-  if(status === 'session') {
+  if (status === 'session') {
     status = 'break';
     count = minBreak * seconds;
     timer(minBreak, seconds, count);
@@ -49,6 +48,15 @@ function chooser() {
     timer(minSesh, seconds, count);
   }
 }
+
+// seconds display prefix zero for single digits
+function display(val) {
+  if (val < 10) {
+    val = '0' + val;
+  }
+  return val;
+}
+
 
 // start / pause button
 $('.btn-start').click(function() {
@@ -61,6 +69,7 @@ $('.btn-start').click(function() {
     $(this).text('Pause');
   } else {
     count = minSesh * seconds;
+    console.log('minSesh = ' + minSesh);
     $('.btn-elements').prop('disabled', true)
     $(this).text('Pause');
     chooser();
@@ -89,4 +98,14 @@ $('.break-plus').click(function() {
 $('.break-minus').click(function() {
   minBreak--;
   $('.break-num').text(minBreak);
+});
+
+// reset button resets values to previous start state
+$('.reset-btn').click(function() {
+  $('.btn-elements').prop('disabled', false);
+  status = 'start';
+  clearInterval(interval);
+  $('.minutes').text(minSesh);
+  $('.seconds').text('00');
+  $('.btn-start').text('Start');
 });

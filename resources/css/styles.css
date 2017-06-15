@@ -1,3 +1,8 @@
+html {
+  font-family: "Arvo", serif;
+  font-size: 20px;
+}
+
 .container {
   width: 250px;
   height: 400px;
@@ -31,11 +36,11 @@
 }
 
 h1 {
-  margin: 20px auto 40px auto;
+  margin: 0 auto 10px auto;
 }
 
 .btn-box p {
-  margin: 40px auto 0 auto;
+  margin: 10px auto 0 auto;
 }
 
 button {
