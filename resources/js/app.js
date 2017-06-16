@@ -1,4 +1,5 @@
 // User Story: I can start a 25 minute pomodoro, and the timer will go off once 25 minutes has elapsed.
+// add delay to new message being added
 
 var seconds = 60,
     count = 0,
@@ -12,7 +13,7 @@ var seconds = 60,
 function timer(min, sec, counter) {
 
   interval = setInterval(function() {
-
+    console.log('counter = ' + counter);
     if (counter % 60 === 0) {
       console.log('minute');
       min--;
@@ -20,7 +21,7 @@ function timer(min, sec, counter) {
       sec = 60;
     } else if (!min && counter === 1) {
       clearInterval(interval);
-      $('.message').text('timer complete') // Display message
+      $('.message').text('timer complete'); // Display message
       chooser();
     }
 
@@ -43,10 +44,12 @@ function chooser() {
     status = 'break';
     count = minBreak * seconds;
     timer(minBreak, seconds, count);
+    $('.message').text('on break');
   } else {
     status = 'session';
     count = minSesh * seconds;
     timer(minSesh, seconds, count);
+    $('.message').text('in session');
   }
 }
 
@@ -62,13 +65,18 @@ function display(val) {
 // start / pause button
 $('.btn-start').click(function() {
   var thus = $(this).text();
+
   if (thus === 'Pause') {
     pauseFlag = true;
     $(this).text('Back to work');
-  } else if (thus === 'Back to work') {
+  }
+
+  else if (thus === 'Back to work') {
     pauseFlag = false;
     $(this).text('Pause');
-  } else {
+  }
+
+  else {
     count = minSesh * seconds;
     $('.btn-elements').prop('disabled', true)
     $(this).text('Pause');
@@ -107,6 +115,7 @@ $('.break-minus').click(function() {
 // reset button resets values to previous start state
 $('.reset-btn').click(function() {
   $('.btn-elements').prop('disabled', false);
+  pauseFlag = false;
   status = 'start';
   clearInterval(interval);
   $('.minutes').text(minSesh);
