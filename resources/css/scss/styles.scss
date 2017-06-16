@@ -1,61 +1,78 @@
 /* colors */
+$type: #d8e9ef;
+$blue: #4ea1d3;
+$bg: #454552;
+$red: #e85a71;
+
 html {
   font-family: 'Fira Sans', sans-serif;
   font-size: 20px;
   letter-spacing: .5px;
-  color: #d8e9ef;
+  color: $type;
+  // background: $bg;
+  // background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
   background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
-  height: 100vh; }
+  height: 100vh;
+}
 
 .container {
   width: 250px;
   height: 420px;
-  background: #454552;
+  background: $bg;
   margin: 40px auto;
   text-align: center;
   border-radius: 5px;
   padding: 20px;
-  box-shadow: 10px 1px 10px -5px rgba(0, 0, 0, 0.23); }
+  box-shadow: 10px 1px 10px -5px rgba(0,0,0,0.23);
+}
 
 .timer-circle {
   margin: 0 auto;
-  border: 3px solid #4ea1d3;
+  border: 3px solid $blue;
   border-radius: 50%;
   width: 200px;
   height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column; }
+  flex-direction: column;
+}
 
 .counter-box {
   font-family: 'Droid Sans Mono', monospace;
   font-size: 250%;
   display: flex;
   justify-content: space-around;
-  color: #e85a71; }
+  color: $red;
+}
 
 .btn-container {
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+}
 
 .btn-elements,
 .btn-box {
-  display: inline-block; }
+  display: inline-block;
+}
 
 .btn-elements {
-  font-size: 120%; }
+  font-size: 120%;
+}
 
 h1 {
   margin: 0 auto 10px auto;
-  color: #4ea1d3; }
+  color: $blue;
+}
 
 .message {
   height: 20px;
-  margin: 10px auto 20px auto; }
+  margin: 10px auto 20px auto;
+}
 
 .btn-box p {
-  margin: 10px auto 0 auto; }
+  margin: 10px auto 0 auto;
+}
 
 button {
   font-size: 80%;
@@ -64,13 +81,14 @@ button {
   border: none;
   background: none;
   outline: none;
-  color: #d8e9ef; }
+  color: $type;
+}
 
 button:hover {
-  color: #4ea1d3; }
+  color: $blue;
+}
 
 .reset-btn {
   margin-top: 8px;
-  color: #4ea1d3; }
-
-/*# sourceMappingURL=styles.css.map */
+  color: $blue;
+}

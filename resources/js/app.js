@@ -1,11 +1,11 @@
-// User Story: I can start a 25 minute pomodoro, and the timer will go off once 25 minutes has elapsed.
-// add delay to new message being added
+// Sound added to time completion event
+// add delay to time complete message
 
 var seconds = 60,
     count = 0,
     minBreak = 2,
     minSesh = 2,
-    status = 'break',
+    status = 'start',
     pauseFlag = false,
     interval;
 
@@ -13,15 +13,18 @@ var seconds = 60,
 function timer(min, sec, counter) {
 
   interval = setInterval(function() {
-    console.log('counter = ' + counter);
+
+    // minute countdown filter
     if (counter % 60 === 0) {
       console.log('minute');
       min--;
       $('.minutes').text(min);
       sec = 60;
+    // timer complete filter (switches status)
     } else if (!min && counter === 1) {
       clearInterval(interval);
-      $('.message').text('timer complete'); // Display message
+      $('.message').text('timer complete');
+      // $('.counter-box').addClass('animated shake');
       chooser();
     }
 
@@ -40,6 +43,7 @@ function timer(min, sec, counter) {
 
 // function that switches between break and session
 function chooser() {
+
   if (status === 'session') {
     status = 'break';
     count = minBreak * seconds;
@@ -51,6 +55,7 @@ function chooser() {
     timer(minSesh, seconds, count);
     $('.message').text('in session');
   }
+
 }
 
 // seconds display prefix zero for single digits
@@ -61,7 +66,6 @@ function display(val) {
   return val;
 }
 
-
 // start / pause button
 $('.btn-start').click(function() {
   var thus = $(this).text();
@@ -69,19 +73,16 @@ $('.btn-start').click(function() {
   if (thus === 'Pause') {
     pauseFlag = true;
     $(this).text('Back to work');
-  }
-
-  else if (thus === 'Back to work') {
+  } else if (thus === 'Back to work') {
     pauseFlag = false;
     $(this).text('Pause');
-  }
-
-  else {
+  } else {
     count = minSesh * seconds;
     $('.btn-elements').prop('disabled', true)
     $(this).text('Pause');
     chooser();
   }
+
 });
 
 // session adjustment buttons
