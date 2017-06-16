@@ -1,6 +1,11 @@
+* {
+  margin: 0;
+}
+
 html {
-  font-family: "Arvo", serif;
+  font-family: 'Fira Sans', sans-serif;
   font-size: 20px;
+
 }
 
 .container {
@@ -26,17 +31,29 @@ html {
 }
 
 .counter-box {
-  font-size: 200%;
+  font-family: 'Droid Sans Mono', monospace;
+  font-size: 250%;
+  display: flex;
+  justify-content: space-around;
 }
 
-.counter-box div,
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 .btn-elements,
 .btn-box {
   display: inline-block;
 }
 
-h1 {
+h1, h4 {
   margin: 0 auto 10px auto;
+}
+
+.message {
+  height: 20px;
+  margin: 15px auto;
 }
 
 .btn-box p {
@@ -44,7 +61,7 @@ h1 {
 }
 
 button {
-  font-size: 120%;
+  font-size: 100%;
   border: none;
   background: none;
   outline: none;

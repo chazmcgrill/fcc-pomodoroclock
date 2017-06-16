@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Pomodoro Clock</title>
-  <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Droid+Sans+Mono|Fira+Sans" rel="stylesheet">
   <link rel="stylesheet" href="resources/css/styles.css">
 </head>
 <body>
@@ -13,6 +13,8 @@
   <div class="container">
 
     <h1>pomodoro</h1>
+
+    <div class='message'>Press start to begin</div>
 
     <div class="timer-circle">
       <div class="counter-box">
@@ -23,18 +25,20 @@
       <button class="btn-start">Start</button>
     </div>
 
-    <div class="session-btn-box btn-box">
-      <p>Session</p>
-      <button class="session-minus btn-elements">-</button>
-      <div class="session-num btn-elements">2</div>
-      <button class="session-plus btn-elements">+</button>
-    </div>
+    <div class="btn-container">
+      <div class="session-btn-box btn-box">
+        <p>Session</p>
+        <button class="session-minus btn-elements">-</button>
+        <div class="session-num btn-elements">2</div>
+        <button class="session-plus btn-elements">+</button>
+      </div>
 
-    <div class="break-btn-box btn-box">
-      <p>Break</p>
-      <button class="break-minus btn-elements">-</button>
-      <div class="break-num btn-elements">2</div>
-      <button class="break-plus btn-elements">+</button>
+      <div class="break-btn-box btn-box">
+        <p>Break</p>
+        <button class="break-minus btn-elements">-</button>
+        <div class="break-num btn-elements">2</div>
+        <button class="break-plus btn-elements">+</button>
+      </div>
     </div>
 
     <div>

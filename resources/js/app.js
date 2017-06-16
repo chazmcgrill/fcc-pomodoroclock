@@ -20,10 +20,11 @@ function timer(min, sec, counter) {
       sec = 60;
     } else if (!min && counter === 1) {
       clearInterval(interval);
-      console.log('timer complete');
+      $('.message').text('timer complete') // Display message
       chooser();
     }
 
+    // proceed timer if pause flag not false
     if (!pauseFlag) {
       console.log(counter + ' second');
       sec--;
@@ -69,7 +70,6 @@ $('.btn-start').click(function() {
     $(this).text('Pause');
   } else {
     count = minSesh * seconds;
-    console.log('minSesh = ' + minSesh);
     $('.btn-elements').prop('disabled', true)
     $(this).text('Pause');
     chooser();
@@ -84,9 +84,11 @@ $('.session-plus').click(function() {
 });
 
 $('.session-minus').click(function() {
-  minSesh--;
-  $('.minutes').text(minSesh);
-  $('.session-num').text(minSesh);
+  if (minSesh > 1) {
+    minSesh--;
+    $('.minutes').text(minSesh);
+    $('.session-num').text(minSesh);
+  }
 });
 
 // break adjustment buttons
@@ -96,8 +98,10 @@ $('.break-plus').click(function() {
 });
 
 $('.break-minus').click(function() {
-  minBreak--;
-  $('.break-num').text(minBreak);
+  if (minBreak > 1) {
+    minBreak--;
+    $('.break-num').text(minBreak);
+  }
 });
 
 // reset button resets values to previous start state
