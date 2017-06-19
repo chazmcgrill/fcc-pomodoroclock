@@ -1,21 +1,19 @@
-/* colors */
 html {
   font-family: 'Fira Sans', sans-serif;
   font-size: 20px;
   letter-spacing: .5px;
   color: #d8e9ef;
-  background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+  background: #454552;
+  background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
   height: 100vh; }
 
 .container {
   width: 250px;
   height: 420px;
-  background: #454552;
   margin: 40px auto;
   text-align: center;
   border-radius: 5px;
-  padding: 20px;
-  box-shadow: 10px 1px 10px -5px rgba(0, 0, 0, 0.23); }
+  padding: 20px; }
 
 .timer-circle {
   margin: 0 auto;
@@ -37,14 +35,13 @@ html {
 
 .btn-container {
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+  font-size: 90%;
+  margin: 0 10px; }
 
 .btn-elements,
 .btn-box {
   display: inline-block; }
-
-.btn-elements {
-  font-size: 120%; }
 
 h1 {
   margin: 0 auto 10px auto;
@@ -67,7 +64,7 @@ button {
   color: #d8e9ef; }
 
 button:hover {
-  color: #4ea1d3; }
+  color: #90c0d1; }
 
 .reset-btn {
   margin-top: 8px;

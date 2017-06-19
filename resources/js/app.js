@@ -122,4 +122,5 @@ $('.reset-btn').click(function() {
   $('.minutes').text(minSesh);
   $('.seconds').text('00');
   $('.btn-start').text('Start');
+  $('.message').text('press start to begin');
 });

@@ -1,4 +1,3 @@
-/* colors */
 $type: #d8e9ef;
 $blue: #4ea1d3;
 $bg: #454552;
@@ -9,21 +8,19 @@ html {
   font-size: 20px;
   letter-spacing: .5px;
   color: $type;
-  // background: $bg;
-  // background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
-  background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+  background: $bg;
+  background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
   height: 100vh;
 }
 
 .container {
   width: 250px;
   height: 420px;
-  background: $bg;
+  // background: $bg;
   margin: 40px auto;
   text-align: center;
   border-radius: 5px;
   padding: 20px;
-  box-shadow: 10px 1px 10px -5px rgba(0,0,0,0.23);
 }
 
 .timer-circle {
@@ -49,15 +46,19 @@ html {
 .btn-container {
   display: flex;
   justify-content: space-between;
+  font-size: 90%;
+  margin: 0 10px;
 }
 
 .btn-elements,
 .btn-box {
   display: inline-block;
+
+
 }
 
 .btn-elements {
-  font-size: 120%;
+  // font-size: 120%;
 }
 
 h1 {
@@ -85,7 +86,7 @@ button {
 }
 
 button:hover {
-  color: $blue;
+  color: darken( $type, 20% );
 }
 
 .reset-btn {
