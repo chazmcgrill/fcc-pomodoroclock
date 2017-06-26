@@ -1,10 +1,10 @@
-// Sound added to time completion event
-// add delay to time complete message
+// timer animation
 
-var seconds = 60,
+var bell = new Audio('resources/bell.mp3'),
+    seconds = 60,
     count = 0,
-    minBreak = 2,
-    minSesh = 2,
+    minBreak = 5,
+    minSesh = 25,
     status = 'start',
     pauseFlag = false,
     interval;
@@ -23,8 +23,7 @@ function timer(min, sec, counter) {
     // timer complete filter (switches status)
     } else if (!min && counter === 1) {
       clearInterval(interval);
-      $('.message').text('timer complete');
-      // $('.counter-box').addClass('animated shake');
+      bell.play();
       chooser();
     }
 
@@ -113,7 +112,7 @@ $('.break-minus').click(function() {
   }
 });
 
-// reset button resets values to previous start state
+// reset button returns values to starting state
 $('.reset-btn').click(function() {
   $('.btn-elements').prop('disabled', false);
   pauseFlag = false;
