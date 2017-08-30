@@ -1,82 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Pomodoro Clock</title>
-  
-  <script src="https://use.fontawesome.com/d891ebaa12.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Droid+Sans+Mono|Fira+Sans" rel="stylesheet">
-  <link rel="stylesheet" href="resources/css/styles.css">
-  <link rel="stylesheet" href="resources/css/animate.css">
-</head>
-<body class="site">
-
-  <div class="container animated bounceIn">
-
-    <h1>pomodoro</h1>
-
-    <div class='message'>press start to begin</div>
-
-    <div class="timer-circle">
-      <div class="counter-box">
-        <div class="minutes">25</div>
-        <div>:</div>
-        <div class="seconds">00</div>
+  <head>
+    <title>Pomodoro Clock</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://use.fontawesome.com/d891ebaa12.js"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+  </head>
+  <body class="site">
+    <div class="container animated bounceIn">
+      <h1>pomodoro</h1>
+      <div class="message">press start to begin</div>
+      <div class="timer-circle">
+        <div class="counter-box">
+          <div class="minutes">25</div>
+          <div>:</div>
+          <div class="seconds">00</div>
+        </div>
+        <button class="btn-start">start</button>
       </div>
-      <button class="btn-start">start</button>
-    </div>
-
-    <div class="btn-container">
-      <div class="session-btn-box btn-box">
-        <p>session</p>
-        <button class="session-minus btn-elements">-</button>
-        <div class="session-num btn-elements">25</div>
-        <button class="session-plus btn-elements">+</button>
+      <div class="btn-container">
+        <div class="session-btn-box btn-box">
+          <p>session</p>
+          <button class="session-minus btn-elements">-</button>
+          <div class="session-num btn-elements">25</div>
+          <button class="session-plus btn-elements">+</button>
+        </div>
+        <div class="break-btn-box btn-box">
+          <p>break</p>
+          <button class="break-minus btn-elements">-</button>
+          <div class="break-num btn-elements">5</div>
+          <button class="break-plus btn-elements">+</button>
+        </div>
       </div>
-
-      <div class="break-btn-box btn-box">
-        <p>break</p>
-        <button class="break-minus btn-elements">-</button>
-        <div class="break-num btn-elements">5</div>
-        <button class="break-plus btn-elements">+</button>
+      <div>
+        <button class="reset-btn">reset   </button>
       </div>
-    </div>
-
-    <div>
-      <button class="reset-btn">reset</button>
-    </div>
-
-  </div>
-
-  <!-- generic footer -->
-  <footer class="footer">
-    <div>
-      <div class="icons">
-        <a href="https://www.freecodecamp.com/chazmcgrill">
-          <i class="fa fa-free-code-camp" aria-hidden="true"></i>
-        </a>
-        <a href="https://twitter.com/charlietdev">
-          <i class="fa fa-twitter" aria-hidden="true"></i>
-        </a>
-        <a href="https://github.com/chazmcgrill">
-          <i class="fa fa-github" aria-hidden="true"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/charlie-taylor-941434134/">
-          <i class="fa fa-linkedin" aria-hidden="true"></i>
-        </a>
-        <a href="https://codepen.io/chazmcgrill/">
-          <i class="fa fa-codepen" aria-hidden="true"></i>
-        </a>
+    </div><!-- generic footer -->
+    <footer class="footer">
+      <div>
+        <div class="icons"><a href="https://www.freecodecamp.com/chazmcgrill"><i class="fa fa-free-code-camp" aria-hidden="true"></i></a><a href="https://twitter.com/charlietdev"><i class="fa fa-twitter" aria-hidden="true"></i></a><a href="https://github.com/chazmcgrill"><i class="fa fa-github" aria-hidden="true"></i></a><a href="https://www.linkedin.com/in/charlie-taylor-941434134/"><i class="fa fa-linkedin" aria-hidden="true"></i></a><a href="https://codepen.io/chazmcgrill/"><i class="fa fa-codepen" aria-hidden="true"></i></a></div>
+        <p>designed and coded by <a href="http://www.hurricanecharlie.co.uk">charlie taylor</a></p>
       </div>
-      <p>designed and coded by <a href="http://www.hurricanecharlie.co.uk">charlie taylor</a></p>
-    </div>
-  </footer>
-
-
-  <script src="resources/js/jquery-3.2.1.min.js"></script>
-  <script src="resources/js/app.js"></script>
-
-</body>
+    </footer>
+    <script src="assets/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/js/app.js"></script>
+  </body>
 </html>

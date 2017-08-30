@@ -1,0 +1,58 @@
+doctype html
+html(lang="en")
+  head
+    title Pomodoro Clock
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible" content="ie=edge")
+    script(src="https://use.fontawesome.com/d891ebaa12.js")
+    link(rel="stylesheet" href="assets/css/styles.css")
+    link(rel="stylesheet" href="assets/css/animate.css")
+      
+  body.site
+    .container.animated.bounceIn
+      
+      h1 pomodoro
+      
+      .message press start to begin
+      
+      .timer-circle
+        .counter-box
+          .minutes 25
+          div :
+          .seconds 00
+        button.btn-start start
+      
+      .btn-container
+        .session-btn-box.btn-box
+          p session
+          button.session-minus.btn-elements -
+          .session-num.btn-elements 25
+          button.session-plus.btn-elements +
+        .break-btn-box.btn-box
+          p break
+          button.break-minus.btn-elements -
+          .break-num.btn-elements 5
+          button.break-plus.btn-elements +
+          
+      div
+        button.reset-btn reset   
+
+    <!-- generic footer -->
+    footer.footer
+      div
+        .icons
+          a(href="https://www.freecodecamp.com/chazmcgrill")
+            i(aria-hidden="true").fa.fa-free-code-camp
+          a(href="https://twitter.com/charlietdev")
+            i(aria-hidden="true").fa.fa-twitter
+          a(href="https://github.com/chazmcgrill")
+            i(aria-hidden="true").fa.fa-github
+          a(href="https://www.linkedin.com/in/charlie-taylor-941434134/")
+            i(aria-hidden="true").fa.fa-linkedin
+          a(href="https://codepen.io/chazmcgrill/")
+            i(aria-hidden="true").fa.fa-codepen
+        p designed and coded by <a href="http://www.hurricanecharlie.co.uk">charlie taylor</a>
+    
+    script(src="assets/js/jquery-3.2.1.min.js")
+    script(src="assets/js/app.js")

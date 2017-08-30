@@ -1,6 +1,6 @@
 // timer animation
 
-var bell = new Audio('resources/bell.mp3'),
+var bell = new Audio('assets/bell.mp3'),
     seconds = 60,
     count = 0,
     minBreak = 5,

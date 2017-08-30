@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css?family=Droid+Sans+Mono|Fira+Sans")
+
+$type: #d8e9ef
+$blue: #4ea1d3
+$bg: #454552
+$red: #e85a71
+
+html
+  font-family: 'Fira Sans', sans-serif
+  font-size: 20px
+  letter-spacing: .5px
+  color: $type
+  background: $bg
+  background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%)
+  background-size: cover
+
+.site
+  display: flex
+  min-height: 100vh
+  flex-direction: column
+  justify-content: space-between
+
+.container
+  width: 250px
+  height: 420px
+  margin: 40px auto
+  text-align: center
+  border-radius: 5px
+  padding: 20px
+
+.timer-circle
+  margin: 0 auto
+  border: 3px solid $blue
+  border-radius: 50%
+  width: 200px
+  height: 200px
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-direction: column
+
+.counter-box
+  font-family: 'Droid Sans Mono', monospace
+  font-size: 250%
+  display: flex
+  justify-content: space-around
+  color: $red
+
+.btn-container
+  display: flex
+  justify-content: space-between
+  font-size: 90%
+  margin: 0 10px
+
+.btn-elements, .btn-box
+  display: inline-block
+
+h1
+  margin: 0 auto 10px auto
+  color: $blue
+
+.message
+  height: 20px
+  margin: 10px auto 20px auto
+
+.btn-box p
+  margin: 10px auto 0 auto
+
+button
+  font-size: 80%
+  text-transform: uppercase
+  letter-spacing: 1px
+  border: none
+  background: none
+  outline: none
+  color: $type
+
+button:hover, .footer i:hover, .footer a:hover
+  color: darken($type, 20%)
+
+.reset-btn
+  margin-top: 8px
+  color: $blue
+
+/* footer */
+.icons
+  width: 150px
+  margin: 0 auto 10px auto
+  display: flex
+  justify-content: space-between
+
+  i
+    font-size: 90%
+
+
+.footer
+  display: flex
+  justify-content: space-around
+  height: 70px
+  text-align: center
+
+  p, i, a
+    color: $blue
+  p
+    font-size: 10px
+  a
+    text-decoration: none
