@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css?family=Droid+Sans+Mono|Fira+Sans");
-
 html {
   font-family: 'Fira Sans', sans-serif;
   font-size: 20px;
@@ -24,15 +23,51 @@ html {
   padding: 20px; }
 
 .timer-circle {
+  position: relative;
   margin: 0 auto;
-  border: 3px solid #4ea1d3;
-  border-radius: 50%;
   width: 200px;
   height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column; }
+
+.circle-box {
+  display: flex;
+  position: absolute; }
+  .circle-box .semi-c {
+    box-sizing: border-box;
+    height: 200px;
+    width: 100px; }
+  .circle-box .left {
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px; }
+  .circle-box .right {
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px; }
+  .circle-box .left-circle, .circle-box .right-circle {
+    border: 8px solid #4ea1d3; }
+  .circle-box .mask-left, .circle-box .mask-right, .circle-box .block {
+    border: 8px solid #e85a71;
+    position: absolute; }
+  .circle-box .left-circle, .circle-box .block, .circle-box .mask-right {
+    border-right: 0; }
+  .circle-box .right-circle, .circle-box .mask-left {
+    border-left: 0; }
+  .circle-box .block, .circle-box .mask-left, .circle-box .left-circle {
+    z-index: 1; }
+  .circle-box .block, .circle-box .mask-left {
+    left: 100px; }
+  .circle-box .mask-left {
+    transform-origin: left center;
+    transform: rotate(0deg); }
+  .circle-box .mask-right {
+    transform-origin: right center;
+    transform: rotate(0deg); }
+  .circle-box .block {
+    display: none; }
+  .circle-box .handle {
+    display: none; }
 
 .counter-box {
   font-family: 'Droid Sans Mono', monospace;
@@ -78,19 +113,18 @@ button:hover, .footer i:hover, .footer a:hover {
   color: #4ea1d3; }
 
 /* footer */
-.icons {
-  width: 150px;
-  margin: 0 auto 10px auto;
-  display: flex;
-  justify-content: space-between; }
-  .icons i {
-    font-size: 90%; }
-
 .footer {
   display: flex;
   justify-content: space-around;
   height: 70px;
   text-align: center; }
+  .footer .icons {
+    width: 150px;
+    margin: 0 auto 10px auto;
+    display: flex;
+    justify-content: space-between; }
+  .footer i {
+    font-size: 90%; }
   .footer p, .footer i, .footer a {
     color: #4ea1d3; }
   .footer p {

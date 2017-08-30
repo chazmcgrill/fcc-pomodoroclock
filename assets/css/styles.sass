@@ -29,15 +29,16 @@ html
   padding: 20px
 
 .timer-circle
+  position: relative
   margin: 0 auto
-  border: 3px solid $blue
-  border-radius: 50%
   width: 200px
   height: 200px
   display: flex
   align-items: center
   justify-content: center
   flex-direction: column
+
+@import 'sections/circle'
 
 .counter-box
   font-family: 'Droid Sans Mono', monospace
@@ -83,25 +84,4 @@ button:hover, .footer i:hover, .footer a:hover
   color: $blue
 
 /* footer */
-.icons
-  width: 150px
-  margin: 0 auto 10px auto
-  display: flex
-  justify-content: space-between
-
-  i
-    font-size: 90%
-
-
-.footer
-  display: flex
-  justify-content: space-around
-  height: 70px
-  text-align: center
-
-  p, i, a
-    color: $blue
-  p
-    font-size: 10px
-  a
-    text-decoration: none
+@import 'sections/footer'

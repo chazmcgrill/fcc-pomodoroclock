@@ -42,27 +42,23 @@ function timer(min, sec, counter) {
 
 // function that switches between break and session
 function chooser() {
-
   if (state === 'session') {
-    state = 'break';
-    count = minBreak * seconds;
-    timer(minBreak, seconds, count);
-    $('.message').text('on break');
+    stateUpdater('break', minBreak, count, 'on break');
   } else {
-    state = 'session';
-    count = minSesh * seconds;
-    timer(minSesh, seconds, count);
-    $('.message').text('in session');
+    stateUpdater('session', minSesh, count, 'in session');
   }
+}
 
+function stateUpdater(stateVal, sesh, count, msg) {
+  state = stateVal;
+  count = sesh * seconds;
+  timer(sesh, seconds, count);
+  $('.message').text(msg);
 }
 
 // seconds display prefix zero for single digits
 function display(val) {
-  if (val < 10) {
-    val = '0' + val;
-  }
-  return val;
+  return (val < 10 ? '0' : '') + val;
 }
 
 // start / pause button
