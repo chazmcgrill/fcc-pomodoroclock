@@ -5,7 +5,7 @@ var bell = new Audio('assets/bell.mp3'),
     count = 0,
     minBreak = 5,
     minSesh = 25,
-    status = 'start',
+    state = 'start',
     pauseFlag = false,
     interval;
 
@@ -20,7 +20,7 @@ function timer(min, sec, counter) {
       min--;
       $('.minutes').text(min);
       sec = 60;
-    // timer complete filter (switches status)
+    // timer complete filter (switches state)
     } else if (!min && counter === 1) {
       clearInterval(interval);
       bell.play();
@@ -31,7 +31,7 @@ function timer(min, sec, counter) {
     if (!pauseFlag) {
       console.log(counter + ' second');
       sec--;
-      value = display(sec);
+      var value = display(sec);
       $('.seconds').text(value);
       counter--;
     }
@@ -43,13 +43,13 @@ function timer(min, sec, counter) {
 // function that switches between break and session
 function chooser() {
 
-  if (status === 'session') {
-    status = 'break';
+  if (state === 'session') {
+    state = 'break';
     count = minBreak * seconds;
     timer(minBreak, seconds, count);
     $('.message').text('on break');
   } else {
-    status = 'session';
+    state = 'session';
     count = minSesh * seconds;
     timer(minSesh, seconds, count);
     $('.message').text('in session');
@@ -67,12 +67,12 @@ function display(val) {
 
 // start / pause button
 $('.btn-start').click(function() {
-  var thus = $(this).text();
+  var $this = $(this).text();
 
-  if (thus === 'Pause') {
+  if ($this === 'Pause') {
     pauseFlag = true;
     $(this).text('Back to work');
-  } else if (thus === 'Back to work') {
+  } else if ($this === 'Back to work') {
     pauseFlag = false;
     $(this).text('Pause');
   } else {
@@ -116,7 +116,7 @@ $('.break-minus').click(function() {
 $('.reset-btn').click(function() {
   $('.btn-elements').prop('disabled', false);
   pauseFlag = false;
-  status = 'start';
+  state = 'start';
   clearInterval(interval);
   $('.minutes').text(minSesh);
   $('.seconds').text('00');
