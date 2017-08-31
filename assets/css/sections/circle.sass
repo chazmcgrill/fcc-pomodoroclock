@@ -1,6 +1,7 @@
 .circle-box
   display: flex
   position: absolute
+  pointer-events: none
 
   .semi-c
   	box-sizing: border-box
@@ -18,20 +19,20 @@
   .left-circle, .right-circle
   	border: 8px solid $blue
 
-  .mask-left, .mask-right, .block
+  .mask-left, .mask-right
   	border: 8px solid $red
   	position: absolute
 
-  .left-circle, .block, .mask-right
+  .left-circle, .mask-right
   	border-right: 0
 
   .right-circle, .mask-left
   	border-left: 0
 
-  .block, .mask-left, .left-circle
+  .mask-left, .left-circle
   	z-index: 1
 
-  .block, .mask-left
+  .mask-left
   	left: 100px
 
   .mask-left
@@ -41,9 +42,6 @@
   .mask-right
   	transform-origin: right center
   	transform: rotate(0deg)
-
-  .block
-  	display: none
 
   .handle
   	display: none

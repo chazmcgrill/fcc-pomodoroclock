@@ -1,5 +1,3 @@
-// timer animation
-
 var bell = new Audio('assets/bell.mp3'),
     seconds = 60,
     count = 0,
@@ -7,7 +5,8 @@ var bell = new Audio('assets/bell.mp3'),
     minSesh = 25,
     state = 'start',
     pauseFlag = false,
-    interval;
+    interval,
+    circleData = {};
 
 // timer function
 function timer(min, sec, counter) {
@@ -20,6 +19,7 @@ function timer(min, sec, counter) {
       min--;
       $('.minutes').text(min);
       sec = 60;
+
     // timer complete filter (switches state)
     } else if (!min && counter === 1) {
       clearInterval(interval);
@@ -31,8 +31,9 @@ function timer(min, sec, counter) {
     if (!pauseFlag) {
       console.log(counter + ' second');
       sec--;
-      var value = display(sec);
+      var value = zeroPrefixer(sec);
       $('.seconds').text(value);
+      timerCircle(counter);
       counter--;
     }
 
@@ -49,16 +50,65 @@ function chooser() {
   }
 }
 
+// updates values from chooser function
 function stateUpdater(stateVal, sesh, count, msg) {
+  resetCircle();
   state = stateVal;
   count = sesh * seconds;
+  circleSetup(count, stateVal);
   timer(sesh, seconds, count);
   $('.message').text(msg);
 }
 
 // seconds display prefix zero for single digits
-function display(val) {
+function zeroPrefixer(val) {
   return (val < 10 ? '0' : '') + val;
+}
+
+// timer circle setup
+function circleSetup(count, sesh) {
+  circleData.deg = 360 / count;
+  circleData.mid = count / 2;
+  circleData.sesh = sesh;
+  circleData.angle = 0;
+  console.log(circleData);
+}
+
+// Function for timer circle animation
+function timerCircle(counter) {
+  console.log('angle = ' + circleData.angle);
+  rotateCircle(counter);
+  circleData.angle += circleData.deg;
+  if(counter === circleData.mid) {
+    circleData.angle = 0;
+    $('.mask-right').css('z-index', '2');
+    $('.mask-left').removeClass('handle');
+  }
+}
+
+function rotateCircle(counter) {
+  if(counter >= circleData.mid) {
+    $('.mask-right').css('transform', 'rotate(' + circleData.angle + 'deg)');
+  } else {
+    $('.mask-left').css('transform', 'rotate(' + circleData.angle + 'deg)');
+  }
+}
+
+// function to reset circle
+function resetCircle(sesh) {
+
+  // // state for session
+  // if (sesh === 'session') {
+  //
+  //
+  // // state for break
+  // } else {
+  //
+  // }
+  // reset css
+  $('.mask-right').css('z-index', '0');
+  $('.mask-left').addClass('handle');
+
 }
 
 // start / pause button
