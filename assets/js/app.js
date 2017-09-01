@@ -1,8 +1,8 @@
 var bell = new Audio('assets/bell.mp3'),
     seconds = 60,
     count = 0,
-    minBreak = 5,
-    minSesh = 25,
+    minBreak = 1,
+    minSesh = 1,
     state = 'start',
     pauseFlag = false,
     interval,
@@ -29,11 +29,12 @@ function timer(min, sec, counter) {
 
     // proceed timer if pause flag not false
     if (!pauseFlag) {
-      console.log(counter + ' second');
+
       sec--;
+      console.log(counter + ' second / ' + sec + '= sec second' );
       var value = zeroPrefixer(sec);
       $('.seconds').text(value);
-      timerCircle(counter);
+      timerCircle(sec);
       counter--;
     }
 
@@ -71,23 +72,27 @@ function circleSetup(count, sesh) {
   circleData.mid = count / 2;
   circleData.sesh = sesh;
   circleData.angle = 0;
-  console.log(circleData);
+  circleData.totalTime = count;
 }
 
 // Function for timer circle animation
-function timerCircle(counter) {
-  console.log('angle = ' + circleData.angle);
-  rotateCircle(counter);
-  circleData.angle += circleData.deg;
-  if(counter === circleData.mid) {
+function timerCircle(countVal) {
+  console.log('timerCircle sec = ' + countVal);
+  console.log(circleData);
+  rotateCircle(countVal);
+
+  if(countVal === circleData.mid) {
     circleData.angle = 0;
     $('.mask-right').css('z-index', '2');
     $('.mask-left').removeClass('handle');
+  } else {
+    circleData.angle += circleData.deg;
   }
+
 }
 
-function rotateCircle(counter) {
-  if(counter >= circleData.mid) {
+function rotateCircle(countVal) {
+  if(countVal >= circleData.mid) {
     $('.mask-right').css('transform', 'rotate(' + circleData.angle + 'deg)');
   } else {
     $('.mask-left').css('transform', 'rotate(' + circleData.angle + 'deg)');
@@ -95,20 +100,9 @@ function rotateCircle(counter) {
 }
 
 // function to reset circle
-function resetCircle(sesh) {
-
-  // // state for session
-  // if (sesh === 'session') {
-  //
-  //
-  // // state for break
-  // } else {
-  //
-  // }
-  // reset css
+function resetCircle() {
   $('.mask-right').css('z-index', '0');
   $('.mask-left').addClass('handle');
-
 }
 
 // start / pause button
