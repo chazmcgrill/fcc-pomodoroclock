@@ -1,0 +1,43 @@
+.timer-circle
+  position: relative
+  margin: 0 auto
+  width: 200px
+  height: 200px
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-direction: column
+
+.semi-c
+  position: absolute
+  width: 100px
+  height: 200px
+  box-sizing: border-box
+  border: solid 5px
+
+.left
+  top: 0
+  left: 0
+  transform-origin: right center
+  transform: rotate(0deg)
+  border-top-left-radius: 100px
+  border-bottom-left-radius: 100px
+  border-right: none
+
+.right
+  top: 0
+  left: 100px
+  transform-origin: left center
+  transform: rotate(0deg)
+  border-top-right-radius: 100px
+  border-bottom-right-radius: 100px
+  border-left: none
+
+.circle
+  border-color: $blue
+
+.mask
+  border-color: $red
+
+.handle
+	display: none
