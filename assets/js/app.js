@@ -29,12 +29,12 @@ function timer(min, sec, counter) {
 
     // proceed timer if pause flag not false
     if (!pauseFlag) {
-
+      console.log(counter + ' = counter second / ' + sec + ' = sec second' );
+      timerCircle(counter);
       sec--;
-      console.log(counter + ' second / ' + sec + '= sec second' );
       var value = zeroPrefixer(sec);
       $('.seconds').text(value);
-      timerCircle(sec);
+
       counter--;
     }
 
@@ -53,9 +53,9 @@ function chooser() {
 
 // updates values from chooser function
 function stateUpdater(stateVal, sesh, count, msg) {
-  resetCircle();
   state = stateVal;
   count = sesh * seconds;
+  resetCircle();
   circleSetup(count, stateVal);
   timer(sesh, seconds, count);
   $('.message').text(msg);
@@ -82,9 +82,9 @@ function timerCircle(countVal) {
   rotateCircle(countVal);
 
   if(countVal === circleData.mid) {
-    circleData.angle = 0;
-    $('.mask-right').css('z-index', '2');
-    $('.mask-left').removeClass('handle');
+    circleData.angle = circleData.deg;
+    $('.right.mask').css('z-index', '2');
+    // $('.left.mask').removeClass('handle');
   } else {
     circleData.angle += circleData.deg;
   }
@@ -93,16 +93,16 @@ function timerCircle(countVal) {
 
 function rotateCircle(countVal) {
   if(countVal >= circleData.mid) {
-    $('.mask-right').css('transform', 'rotate(' + circleData.angle + 'deg)');
+    $('.left.mask').css('transform', 'rotate(' + circleData.angle + 'deg)');
   } else {
-    $('.mask-left').css('transform', 'rotate(' + circleData.angle + 'deg)');
+    $('.right.mask').css('transform', 'rotate(' + circleData.angle + 'deg)');
   }
 }
 
 // function to reset circle
 function resetCircle() {
-  $('.mask-right').css('z-index', '0');
-  $('.mask-left').addClass('handle');
+  $('.left.mask').css('transform', 'rotate(0deg)');
+  $('.right.mask').css('z-index', '0');
 }
 
 // start / pause button

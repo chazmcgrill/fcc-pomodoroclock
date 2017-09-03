@@ -8,12 +8,15 @@
   justify-content: center
   flex-direction: column
 
+.circle-box
+  pointer-events: none
+
 .semi-c
   position: absolute
   width: 100px
   height: 200px
   box-sizing: border-box
-  border: solid 5px
+  border: solid 6px
 
 .left
   top: 0
@@ -23,6 +26,7 @@
   border-top-left-radius: 100px
   border-bottom-left-radius: 100px
   border-right: none
+  z-index: 1
 
 .right
   top: 0
@@ -38,6 +42,3 @@
 
 .mask
   border-color: $red
-
-.handle
-	display: none
