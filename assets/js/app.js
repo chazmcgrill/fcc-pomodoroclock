@@ -1,14 +1,13 @@
 var bell = new Audio('assets/bell.mp3'),
     seconds = 60,
     count = 0,
-    minBreak = 1,
-    minSesh = 1,
+    minBreak = 5,
+    minSesh = 25,
     state = 'start',
     pauseFlag = false,
     interval,
     circleData = {};
 
-// FUNCTIONS
 
 /* Timer function counts down seconds and minutes
 using a a setInterval function. Filter for seconds,
@@ -18,13 +17,13 @@ function timer(min, sec, counter) {
   interval = setInterval(function() {
 
     // minute countdown filter
-    if (counter % 60 === 0) {
+    if (counter % 60 === 0 && !pauseFlag) {
       min--;
       $('.minutes').text(min);
       sec = 60;
     }
 
-    // seconds timer if not paused
+    // seconds filter (if not paused)
     if (!pauseFlag) {
       sec--;
       var value = zeroPrefixer(sec);
@@ -126,7 +125,6 @@ function colourSwap(stateVal) {
   }
 }
 
-// CLICK EVENTS
 
 /* click event for the start / pause button. This either
 starts or pauses depending on the current status and updates
