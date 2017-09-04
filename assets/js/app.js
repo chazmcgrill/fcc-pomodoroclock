@@ -19,23 +19,24 @@ function timer(min, sec, counter) {
       min--;
       $('.minutes').text(min);
       sec = 60;
-
-    // timer complete filter (switches state)
-    } else if (!min && counter === 1) {
-      clearInterval(interval);
-      bell.play();
-      chooser();
     }
+
 
     // proceed timer if pause flag not false
     if (!pauseFlag) {
-      console.log(counter + ' = counter second / ' + sec + ' = sec second' );
-      timerCircle(counter);
       sec--;
       var value = zeroPrefixer(sec);
       $('.seconds').text(value);
-
       counter--;
+      console.log(counter + ' = counter second / ' + sec + ' = sec second' );
+      timerCircle(counter);
+    }
+
+    // timer complete filter (switches state)
+    if (min === 0 && sec === 0) {
+      clearInterval(interval);
+      bell.play();
+      chooser();
     }
 
   }, 1000);
@@ -84,7 +85,6 @@ function timerCircle(countVal) {
   if(countVal === circleData.mid) {
     circleData.angle = circleData.deg;
     $('.right.mask').css('z-index', '2');
-    // $('.left.mask').removeClass('handle');
   } else {
     circleData.angle += circleData.deg;
   }
@@ -102,6 +102,7 @@ function rotateCircle(countVal) {
 // function to reset circle
 function resetCircle() {
   $('.left.mask').css('transform', 'rotate(0deg)');
+  $('.right.mask').css('transform', 'rotate(0deg)');
   $('.right.mask').css('z-index', '0');
 }
 
