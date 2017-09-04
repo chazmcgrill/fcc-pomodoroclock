@@ -88,6 +88,12 @@ html {
 .mask {
   border-color: #e85a71; }
 
+.overlay-circle {
+  border-color: #e85a71; }
+
+.overlay-mask {
+  border-color: #4ea1d3; }
+
 .counter-box {
   font-family: 'Droid Sans Mono', monospace;
   font-size: 250%;

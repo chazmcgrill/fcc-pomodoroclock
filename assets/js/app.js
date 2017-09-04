@@ -56,6 +56,7 @@ function chooser() {
 function stateUpdater(stateVal, sesh, count, msg) {
   state = stateVal;
   count = sesh * seconds;
+  colourSwap(stateVal);
   resetCircle();
   circleSetup(count, stateVal);
   timer(sesh, seconds, count);
@@ -105,6 +106,14 @@ function resetCircle() {
   $('.right.mask').css('transform', 'rotate(0deg)');
   $('.right.mask').css('z-index', '0');
 }
+
+// color swapper function
+// $blue: #4ea1d3 / $red: #e85a71
+function colourSwap(sesh) {
+  $('.mask').toggleClass('overlay-mask');
+  $('.circle').toggleClass('overlay-circle');
+}
+
 
 // start / pause button
 $('.btn-start').click(function() {
@@ -163,4 +172,5 @@ $('.reset-btn').click(function() {
   $('.seconds').text('00');
   $('.btn-start').text('Start');
   $('.message').text('press start to begin');
+
 });
