@@ -8,31 +8,32 @@ var bell = new Audio('assets/bell.mp3'),
     interval,
     circleData = {};
 
-// timer function
+// FUNCTIONS
+
+/* Timer function counts down seconds and minutes
+using a a setInterval function. Filter for seconds,
+minutes and completion. Also checks for pause flag. */
 function timer(min, sec, counter) {
 
   interval = setInterval(function() {
 
     // minute countdown filter
     if (counter % 60 === 0) {
-      console.log('minute');
       min--;
       $('.minutes').text(min);
       sec = 60;
     }
 
-
-    // proceed timer if pause flag not false
+    // seconds timer if not paused
     if (!pauseFlag) {
       sec--;
       var value = zeroPrefixer(sec);
       $('.seconds').text(value);
       counter--;
-      console.log(counter + ' = counter second / ' + sec + ' = sec second' );
       timerCircle(counter);
     }
 
-    // timer complete filter (switches state)
+    // timer complete filter switches state
     if (min === 0 && sec === 0) {
       clearInterval(interval);
       bell.play();
@@ -43,7 +44,8 @@ function timer(min, sec, counter) {
 
 }
 
-// function that switches between break and session
+/* Function that switches between break and session
+this calls the function to update the state. */
 function chooser() {
   if (state === 'session') {
     stateUpdater('break', minBreak, count, 'on break');
@@ -52,23 +54,23 @@ function chooser() {
   }
 }
 
-// updates values from chooser function
+/* Function that updates the timer values from chooser
+function and starts the timer */
 function stateUpdater(stateVal, sesh, count, msg) {
   state = stateVal;
   count = sesh * seconds;
-  colourSwap(stateVal);
-  resetCircle();
+  resetCircle(stateVal);
   circleSetup(count, stateVal);
   timer(sesh, seconds, count);
   $('.message').text(msg);
 }
 
-// seconds display prefix zero for single digits
+/* Zero prefixer function for seconds display */
 function zeroPrefixer(val) {
   return (val < 10 ? '0' : '') + val;
 }
 
-// timer circle setup
+/* Function to setup values for animated timer circle */
 function circleSetup(count, sesh) {
   circleData.deg = 360 / count;
   circleData.mid = count / 2;
@@ -77,10 +79,10 @@ function circleSetup(count, sesh) {
   circleData.totalTime = count;
 }
 
-// Function for timer circle animation
+/* Function to control the timer circle animation
+according to the current seconds count */
 function timerCircle(countVal) {
-  console.log('timerCircle sec = ' + countVal);
-  console.log(circleData);
+
   rotateCircle(countVal);
 
   if(countVal === circleData.mid) {
@@ -92,6 +94,8 @@ function timerCircle(countVal) {
 
 }
 
+/* Function rotate the mask parts of the timer circle
+animation */
 function rotateCircle(countVal) {
   if(countVal >= circleData.mid) {
     $('.left.mask').css('transform', 'rotate(' + circleData.angle + 'deg)');
@@ -100,22 +104,33 @@ function rotateCircle(countVal) {
   }
 }
 
-// function to reset circle
-function resetCircle() {
+/* Function to reset the timer circle parts ready
+for the next session. */
+function resetCircle(stateVal) {
+  colourSwap(stateVal);
   $('.left.mask').css('transform', 'rotate(0deg)');
   $('.right.mask').css('transform', 'rotate(0deg)');
   $('.right.mask').css('z-index', '0');
 }
 
-// color swapper function
-// $blue: #4ea1d3 / $red: #e85a71
-function colourSwap(sesh) {
-  $('.mask').toggleClass('overlay-mask');
-  $('.circle').toggleClass('overlay-circle');
+/* Function change the timer circle colours according
+to the current session. This works by adding an overlay
+class with the alternative colors. */
+function colourSwap(stateVal) {
+  if (stateVal === 'break') {
+    $('.mask').addClass('overlay-mask');
+    $('.circle').addClass('overlay-circle');
+  } else {
+    $('.mask').removeClass('overlay-mask');
+    $('.circle').removeClass('overlay-circle');
+  }
 }
 
+// CLICK EVENTS
 
-// start / pause button
+/* click event for the start / pause button. This either
+starts or pauses depending on the current status and updates
+the status on screen */
 $('.btn-start').click(function() {
   var $this = $(this).text();
 
@@ -134,7 +149,7 @@ $('.btn-start').click(function() {
 
 });
 
-// session adjustment buttons
+/* session adjustment buttons */
 $('.session-plus').click(function() {
   minSesh++;
   $('.minutes').text(minSesh);
@@ -149,7 +164,7 @@ $('.session-minus').click(function() {
   }
 });
 
-// break adjustment buttons
+/* break adjustment buttons */
 $('.break-plus').click(function() {
   minBreak++;
   $('.break-num').text(minBreak);
@@ -162,7 +177,7 @@ $('.break-minus').click(function() {
   }
 });
 
-// reset button returns values to starting state
+/* reset button returns values to original starting state */
 $('.reset-btn').click(function() {
   $('.btn-elements').prop('disabled', false);
   pauseFlag = false;
@@ -172,5 +187,5 @@ $('.reset-btn').click(function() {
   $('.seconds').text('00');
   $('.btn-start').text('Start');
   $('.message').text('press start to begin');
-
+  resetCircle('reset');
 });
