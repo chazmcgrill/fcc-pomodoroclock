@@ -26,8 +26,7 @@ function timer(min, sec, counter) {
     // seconds filter (if not paused)
     if (!pauseFlag) {
       sec--;
-      var value = zeroPrefixer(sec);
-      $('.seconds').text(value);
+      $('.seconds').text(zeroPrefixer(sec));
       counter--;
       timerCircle(counter);
     }
@@ -74,7 +73,7 @@ function circleSetup(count, sesh) {
   circleData.deg = 360 / count;
   circleData.mid = count / 2;
   circleData.sesh = sesh;
-  circleData.angle = 0;
+  circleData.angle = circleData.deg;
   circleData.totalTime = count;
 }
 
@@ -83,6 +82,9 @@ according to the current seconds count */
 function timerCircle(countVal) {
 
   rotateCircle(countVal);
+
+  console.log('countVal = ' + countVal);
+  console.log(circleData);
 
   if(countVal === circleData.mid) {
     circleData.angle = circleData.deg;
@@ -106,10 +108,12 @@ function rotateCircle(countVal) {
 /* Function to reset the timer circle parts ready
 for the next session. */
 function resetCircle(stateVal) {
+  // $('.mask').addClass('no-transition');
   colourSwap(stateVal);
   $('.left.mask').css('transform', 'rotate(0deg)');
   $('.right.mask').css('transform', 'rotate(0deg)');
   $('.right.mask').css('z-index', '0');
+  // $('.mask').removeClass('no-transition');
 }
 
 /* Function change the timer circle colours according
