@@ -80,25 +80,20 @@ function circleSetup(count, sesh) {
 /* Function to control the timer circle animation
 according to the current seconds count */
 function timerCircle(countVal) {
-
   rotateCircle(countVal);
 
-  console.log('countVal = ' + countVal);
-  console.log(circleData);
-
-  if(countVal === circleData.mid) {
+  if (countVal === circleData.mid) {
     circleData.angle = circleData.deg;
     $('.right.mask').css('z-index', '2');
   } else {
     circleData.angle += circleData.deg;
   }
-
 }
 
 /* Function rotate the mask parts of the timer circle
 animation */
 function rotateCircle(countVal) {
-  if(countVal >= circleData.mid) {
+  if (countVal >= circleData.mid) {
     $('.left.mask').css('transform', 'rotate(' + circleData.angle + 'deg)');
   } else {
     $('.right.mask').css('transform', 'rotate(' + circleData.angle + 'deg)');
@@ -108,12 +103,10 @@ function rotateCircle(countVal) {
 /* Function to reset the timer circle parts ready
 for the next session. */
 function resetCircle(stateVal) {
-  // $('.mask').addClass('no-transition');
   colourSwap(stateVal);
   $('.left.mask').css('transform', 'rotate(0deg)');
   $('.right.mask').css('transform', 'rotate(0deg)');
   $('.right.mask').css('z-index', '0');
-  // $('.mask').removeClass('no-transition');
 }
 
 /* Function change the timer circle colours according
